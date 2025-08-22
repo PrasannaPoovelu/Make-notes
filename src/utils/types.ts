@@ -23,3 +23,9 @@ export type Tag={
     id:string
     label:string
 }
+
+export type CardList ={
+  id: string;
+  title: string;
+  tags: Tag[];
+}
