@@ -5,7 +5,7 @@ import CreatableSelect from "react-select/creatable";
 import type { NoteData, Tag } from "../utils/types";
 import { v4 as uuidV4 } from "uuid";
 
-interface CreateFormProps {
+interface CreateFormProps extends Partial<NoteData> {
   onSubmit: (data: NoteData) => void;
   addtag: (tag: Tag) => void;
   availableTags: Tag[];
@@ -14,13 +14,13 @@ interface CreateFormProps {
 const CreateForm: React.FC<CreateFormProps> = ({
   onSubmit,
   addtag,
-  availableTags,
+  availableTags,title="", markdown="", tags=[]
 }) => {
   const titleRef = useRef<HTMLInputElement>(null);
   const markRef = useRef<HTMLTextAreaElement>(null);
   const navigate = useNavigate()
 
-  const [selectValue, setSelectValue] = useState<Tag[]>([]);
+  const [selectValue, setSelectValue] = useState<Tag[]>(tags);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -40,7 +40,7 @@ const CreateForm: React.FC<CreateFormProps> = ({
             <Col>
               <Form.Group controlId="title">
                 <Form.Label>Title</Form.Label>
-                <Form.Control ref={titleRef} required />
+                <Form.Control ref={titleRef} required defaultValue={title}/>
               </Form.Group>
             </Col>
             <Col>
@@ -72,7 +72,7 @@ const CreateForm: React.FC<CreateFormProps> = ({
           </Row>
           <Form.Group controlId="markdown">
             <Form.Label>Body</Form.Label>
-            <Form.Control required as="textarea" rows={15} ref={markRef} />
+            <Form.Control required as="textarea" rows={15} ref={markRef} defaultValue={markdown} />
           </Form.Group>
           <Stack direction="horizontal" gap={2} className="justify-content-end">
             <button type="submit" className="btn btn-primary">

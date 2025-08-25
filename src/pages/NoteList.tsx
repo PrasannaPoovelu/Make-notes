@@ -25,8 +25,7 @@ const NoteList: React.FC<NoteListProps> = ({ availableTags, notes }) => {
         );
       return matchesTitle && matchesTags;
     });
-  }, [title, selectValue, notes]); // This should be replaced with actual filtering logic based on title and selected tags
-
+  }, [title, selectValue, notes]); 
   return (
     <>
       <Row className="mb-4 align-items-center">

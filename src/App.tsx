@@ -10,6 +10,7 @@ import { useMemo } from "react";
 import { v4 as uuidV4 } from "uuid";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NoteLayout from "./pages/NoteLayout";
 
 function App() {
 
@@ -33,6 +34,27 @@ function App() {
     })
   }
 
+  function onUpdateNote(id:string, {tags,...data}: NoteData) {
+    setNote(prev => {
+      return prev.map(n => {
+        if (n.id === id) {
+          return {...n,
+            ...data,
+            tagsIds: tags.map(t => t.id),
+          };
+        } else {
+          return n;
+        }
+      });
+    })
+  }
+
+  function deleteNote(id:string) {
+    setNote(prev => {
+      return prev.filter(t => t.id !== id);
+    })
+  }
+
   function onAddTag(tag: Tag) {
     setTags(prev => {
       return [...prev, tag];
@@ -44,9 +66,9 @@ function App() {
     <Routes>
      <Route path="/" element={<NoteList  availableTags={tag} notes={noteWithTags}/>} />
       <Route path="/create" element={<CreatNote onSubmit={onCreateNote} addTag={onAddTag} availableTags={tag}/>} />
-      <Route path="/:id">
-      <Route index element={<ShowNote />} />
-      <Route path="edit" element={<EditNote />} />
+      <Route path="/:id" element={<NoteLayout notes={noteWithTags}/>}>
+      <Route index element={<ShowNote onDelete={deleteNote}/>} />
+      <Route path="edit" element={<EditNote onSubmit={onUpdateNote} addTag={onAddTag} availableTags={tag}/>} />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

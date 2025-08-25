@@ -1,7 +1,7 @@
 import { Badge, Card, Stack } from "react-bootstrap";
 import type { CardList } from "../utils/types";
 import { Link } from "react-router-dom";
-import style from "./NoteCard.module.css"; // Assuming you have a CSS module for styles
+import style from "./NoteCard.module.css";
 
 const NoteCard = ({ id, title, tags }: CardList) => {
   return (
