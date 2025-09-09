@@ -7,13 +7,13 @@ import { v4 as uuidV4 } from "uuid";
 
 interface CreateFormProps extends Partial<NoteData> {
   onSubmit: (data: NoteData) => void;
-  addtag: (tag: Tag) => void;
+  addTag: (tag: Tag) => void;
   availableTags: Tag[];
 }
 
 const CreateForm: React.FC<CreateFormProps> = ({
   onSubmit,
-  addtag,
+  addTag,
   availableTags,title="", markdown="", tags=[]
 }) => {
   const titleRef = useRef<HTMLInputElement>(null);
@@ -48,9 +48,9 @@ const CreateForm: React.FC<CreateFormProps> = ({
                 <Form.Label>Tags</Form.Label>
                 <CreatableSelect
                   isMulti
-                  onCreateOption={(lable) => {
-                    const newTag = { id: uuidV4(), label: lable };
-                    addtag(newTag);
+                  onCreateOption={(label) => {
+                    const newTag = { id: uuidV4(), label: label };
+                    addTag(newTag);
                     setSelectValue((prev) => [...prev, newTag]);
                   }}
                   options={availableTags.map((tag) => {

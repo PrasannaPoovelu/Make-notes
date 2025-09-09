@@ -10,7 +10,7 @@ import { v4 as uuidV4 } from "uuid";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import NoteLayout from "./pages/NoteLayout";
-import CreateNote from "./pages/CreatNote";
+import CreateNote from "./pages/CreateNote";
 
 function App() {
   const [note, setNote] = UseLocalStorage<RawNote[]>("NOTES", []);

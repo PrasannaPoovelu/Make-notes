@@ -13,7 +13,7 @@ const CreateNote:React.FC<CreateNoteProps> = ({onSubmit,addTag,availableTags}) =
       <h1 className="mb-4">
         Create Note
       </h1>
-      <CreateForm onSubmit={onSubmit} addtag={addTag} availableTags={availableTags} />
+      <CreateForm onSubmit={onSubmit} addTag={addTag} availableTags={availableTags} />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge, Col, Row, Stack } from "react-bootstrap";
-import { useNote } from "./NoteLayout";
 import { Link, useNavigate } from "react-router-dom";
+import { useNote } from "../utils/useNote";
 
 interface ShowNoteProps {
   onDelete: (id: string) => void;

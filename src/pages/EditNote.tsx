@@ -1,6 +1,6 @@
 import CreateForm from "../form/CreateForm";
 import type { NoteData, Tag } from "../utils/types";
-import { useNote } from "./NoteLayout";
+import { useNote } from "../utils/useNote";
 
 interface EditNoteProps {
   onSubmit: (id: string, data: NoteData) => void;
@@ -22,7 +22,7 @@ const EditNote: React.FC<EditNoteProps> = ({
         markdown={note.markdown}
         tags={note.tags}
         onSubmit={(data) => onSubmit(note.id, data)}
-        addtag={addTag}
+        addTag={addTag}
         availableTags={availableTags}
       />
     </>
