@@ -44,7 +44,7 @@ const ShowNote: React.FC<ShowNoteProps> = ({ onDelete }) => {
             </Link>
           </Stack>
         </Col>
-        <div>{note.markdown}</div>
+        <div style={{marginTop:40}}>{note.markdown}</div>
       </Row>
     </>
   );
