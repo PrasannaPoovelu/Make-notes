@@ -1,13 +1,13 @@
 import CreateForm from "../form/CreateForm"
 import type { NoteData, Tag } from "../utils/types";
 
-interface CreatNoteProps {
+interface CreateNoteProps {
   onSubmit: (data: NoteData) => void;
   addTag: (tag: Tag) => void;
   availableTags: Tag[];
 }
 
-const CreatNote:React.FC<CreatNoteProps> = ({onSubmit,addTag,availableTags}) => {
+const CreateNote:React.FC<CreateNoteProps> = ({onSubmit,addTag,availableTags}) => {
   return (
     <>
       <h1 className="mb-4">
@@ -18,4 +18,4 @@ const CreatNote:React.FC<CreatNoteProps> = ({onSubmit,addTag,availableTags}) => 
   )
 }
 
-export default CreatNote
+export default CreateNote
